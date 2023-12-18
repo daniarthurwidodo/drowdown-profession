@@ -16,11 +16,11 @@ export class HomeComponent {
   constructor(private homeService: HomeService, private fb: FormBuilder) {
     this.dropdown =
       this.homeService.rawdata.payload[0].content.dropdownContent.profession;
-    (this.dropdown);
+    console.log(this.dropdown[0].typeOfIndustry[0]);
     this.profileForm = new FormGroup({
       langForm: new FormControl('eng'),
       professionForm: new FormControl(this.dropdown[0].code),
-      profession2Form: new FormControl([]),
+      profession2Form: new FormControl(this.dropdown[0].typeOfIndustry[0].code),
     });
   }
 
@@ -29,7 +29,6 @@ export class HomeComponent {
   }
 
   onCascade(event: any) {
-    (event.target.value);
     let value = this.dropdown.filter((i: any) => {
       (i.code == event.target.value);
 
@@ -38,6 +37,5 @@ export class HomeComponent {
       }
     });
     this.dropdown2 = value[0].typeOfIndustry;
-    (value);
   }
 }

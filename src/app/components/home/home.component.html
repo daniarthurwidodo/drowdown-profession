@@ -25,28 +25,30 @@
           </option>
         </select>
 
-        <select
-          formControlName="profession2Form"
-          *ngIf="
-            profileForm.controls['langForm'].value == 'eng' && profileForm.controls['profession2Form'].value 
-          "
-        >
-          <option  [value]="data2.code"  *ngFor="let data2 of dropdown2">
-            {{ data2.eng }}
-          </option>
-        </select>
-        <select
-          formControlName="profession2Form"
-          *ngIf="
-          profileForm.controls['langForm'].value == 'indo' && profileForm.controls['profession2Form'].value
-          "
-        >
-          <option [value]="data2.code" *ngFor="let data2 of dropdown2">
-            {{ data2.indo }}
-          </option>
-        </select>
+        <div>
+            <select
+            formControlName="profession2Form"
+            *ngIf="
+              profileForm.controls['langForm'].value == 'eng'
+            "
+          >
+            <option  [value]="data2.code"  *ngFor="let data2 of dropdown2">
+              {{ data2.eng }}
+            </option>
+          </select>
+          <select
+            formControlName="profession2Form"
+            *ngIf="
+            profileForm.controls['langForm'].value == 'indo'
+            "
+          >
+            <option [value]="data2.code" *ngFor="let data2 of dropdown2">
+              {{ data2.indo }}
+            </option>
+          </select>
+        </div>
+
       </form>
-      {{profileForm.controls['profession2Form'].value}}
     </div>
   </div>
 </div>
