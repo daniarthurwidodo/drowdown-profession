@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form class="p-4 d-flex gap-2" [formGroup]="profileForm">
+        <select  (change)="onChange()" formControlName="langForm">
+          <option value="eng">English</option>
+          <option value="indo">Indo</option>
+        </select>
+        <select
+          formControlName="professionForm"
+          *ngIf="profileForm.controls['langForm'].value == 'eng'"
+          (change)="onCascade($event)"
+        >
+          <option [value]="data.code" *ngFor="let data of dropdown">
+            {{ data.eng }}
+          </option>
+        </select>
+        <select
+          formControlName="professionForm"
+          *ngIf="profileForm.controls['langForm'].value == 'indo'"
+          (change)="onCascade($event)"
+        >
+          <option [value]="data.code" *ngFor="let data of dropdown">
+            {{ data.indo }}
+          </option>
+        </select>
+
+        <select
+          formControlName="profession2Form"
+          *ngIf="
+            profileForm.controls['langForm'].value == 'eng' && profileForm.controls['profession2Form'].value 
+          "
+        >
+          <option  [value]="data2.code"  *ngFor="let data2 of dropdown2">
+            {{ data2.eng }}
+          </option>
+        </select>
+        <select
+          formControlName="profession2Form"
+          *ngIf="
+          profileForm.controls['langForm'].value == 'indo' && profileForm.controls['profession2Form'].value
+          "
+        >
+          <option [value]="data2.code" *ngFor="let data2 of dropdown2">
+            {{ data2.indo }}
+          </option>
+        </select>
+      </form>
+      {{profileForm.controls['profession2Form'].value}}
+    </div>
+  </div>
+</div>
